@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sh '''
                 sed -i "s|image: .*|image: ${IMAGE_NAME}:${IMAGE_TAG}|" \
-                python-jenkins-argocd-k8s/deploy/deployment.yaml
+                python-jenkins-argocd-k8s/deploy/deploy.yaml
                 '''
             }
         }
@@ -60,7 +60,7 @@ pipeline {
                 git config user.email "jenkins@local"
                 git config user.name "jenkins"
 
-                git add python-jenkins-argocd-k8s/deploy/deployment.yaml
+                git add python-jenkins-argocd-k8s/deploy/deploy.yaml
                 git commit -m "update image to ${IMAGE_TAG}"
                 git push origin main
                 '''
